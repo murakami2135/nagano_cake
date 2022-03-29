@@ -1,0 +1,96 @@
+<div class="container col-10">
+  <dif class="row mt-5 justify-content-center">
+    <div class="col-8"><h3 class="my-bg-lggray">注文履歴詳細</h3></div>
+  </dif>
+<div>
+  <ul class="list-group order-show">
+    <li>
+      <div class="title">購入者</div>
+      <div>
+        <%= link_to admin_customer_path(@order.customer_id), class: "order-customer" do %>
+        <%= @order.customer.last_name %> <%= @order.customer.first_name %>
+        <% end %>
+      </div>
+    </li>
+    <li>
+      <div class="title">注文日</div>
+      <div><%= @order.created_at.strftime('%Y/%m/%d') %></div>
+    </li>
+    <li>
+      <div class="title">配送先</div>
+      <div>
+        〒<%= @order.postal_code %> <%= @order.address %><br>
+        <%= @order.name %>
+      </div>
+    </li>
+    <li>
+      <div class="title">支払方法</div>
+      <div><%= @order.payment_method_i18n %></div>
+    </li>
+    <li>
+      <div class="title">注文ステータス</div>
+      <%= form_with model: [:admin, @order],local: true,class: "form-group order_status" do |f| %>
+        <div>
+
+        </div><%= f.select :status,
+          options_for_select(Order.statuses_i18n.map {|k,v| [v,k] }, @order.status),{}, {class: 'form-control'} %>
+        <div>
+          <%= f.submit '更新', class: "order_status btn btn-success ml-5" %>
+        </div>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="row mt-4">
+  <div class="col-8">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>製作ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |order_item| %>
+        <tr class="order_item_tr">
+          <td><%= order_item.item.name %></td>
+          <td><%= order_item.price.to_s(:delimited) %></td>
+          <td><%= order_item.amount %></td>
+          <td><%= order_item.subtotal %><% @total_price += order_item.subtotal %></td>
+          <td>
+            <%= form_with model: [:admin, order_item], local: true,class: "form-group order_item_status" do |f| %>
+              <div><%= f.select :making_status,
+              options_for_select(OrderItem.making_statuses_i18n.map { |k,v| [v,k]}, order_item.making_status),{}, {class: 'form-control'} %>
+              </div>
+              <div>
+              <%= f.submit '更新', class: "order_status btn btn-success ml-5" %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-4 mt-auto">
+    <ul class="cost-list-group">
+      <li class="row">
+        <div class="col-6">商品合計</div>
+        <div class="col-6"><% a = @total_price %><%= a.to_s(:delimited) %>円</div>
+      </li>
+      <li class="row my-3">
+        <div class="col-6">送料</div>
+        <div class="col-6"><% b = @order.shipping_cost %><%= b %>円</div>
+      </li>
+      <li class="row">
+        <div class="col-6">請求金額合計</div>
+        <div class="col-6"><%= (a + b).to_s(:delimited) %>円</div>
+      </li>
+    </ul>
+  </div>
+</div>
+

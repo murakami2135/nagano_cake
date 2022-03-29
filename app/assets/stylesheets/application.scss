@@ -1,0 +1,272 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+/* ベース
+===========================*/
+
+/* レイアウト
+===========================*/
+
+
+
+
+/*モジュール
+===========================*/
+
+.bg-half-white{
+  background-color:rgba(255,255,255,0.5);
+}
+
+.main-bg-image{
+  background-image: url("22132031_s.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  height: 400px;
+}
+
+.caption-side-top{
+  caption-side: top;
+}
+
+
+.w-15 {
+  width: 15%;
+}
+
+.align-middle td,
+.align-middle th{
+    vertical-align: middle;
+}
+
+.my-bg-lggray{
+  background-color: #dee2e6;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.orders-table {
+ padding: 10px;
+}
+
+.title{
+  width: 20%;
+  font-size: 1.2rem;
+
+}
+
+a.order-customer,
+.item-name>a{
+  text-decoration: revert;
+}
+
+.order-show{
+  list-style: none;
+
+}
+
+.order-show > li{
+  display: flex;
+}
+
+.list-group.order-show > li{
+  margin: 10px 0;
+}
+
+.list-group.order-show > li div,
+.list-group.order-show > li a{
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+
+
+.form-group.order_status{
+  display: flex;
+}
+
+.form-group.order_item_status{
+  display: flex;
+}
+
+tr.order_item_tr>td{
+  vertical-align: middle;
+}
+
+.form-group.order_item_status,
+.form-group.order_status{
+  margin-bottom: 0;
+}
+
+.cost-list-group{
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+tr:last-child{
+  border-bottom: 1px solid #dee2e6;
+
+}
+
+.show-item-table{
+  width:80%;
+
+}
+
+.show-item-table th{
+  width:30%;
+}
+.show-item-table td{
+  width:70%;
+}
+
+#border-less{
+  border-collapse: inherit;
+}
+
+.edit-item textarea.form-control,
+.new-item textarea.form-control{
+  height: 200px;
+}
+
+.ml-6 {
+    margin-left: 5rem !important;
+}
+
+.text-underline{
+  text-decoration: underline;
+}
+
+.customer-data dt,
+.customer-data dd{
+  margin: 10px 0;
+}
+
+.nav-item > a{
+  width: 100px;
+  padding: 10px 1px;
+}
+
+.nav-item > a.admin{
+  width: 120px;
+  padding: 10px 1px;
+}
+
+.search_box {
+  display: inline-block; /* なくても大丈夫だけど、念の為 */
+  position: relative;    /* 基準値とする */
+}
+
+.search_box::after {
+  content: "";           /* 疑似要素に必須 */
+  width: 16px;           /* アイコンの横幅 */
+  height: 16px;          /* アイコンの高さ */
+  display: inline-block; /* 高さを持たせるためにインラインブロック要素にする */
+  position: absolute;    /* 相対位定 */
+  top: 10px;              /* アイコン位置 */
+  right: 5px;             /* アイコン位置 */
+}
+
+.search_box input {
+  padding: 3px 2rem 3px 0; /* アイコンを設置するため右の余白を多めに指定*/
+}
+
+.search_bottun{
+  opacity: .6;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  border: none;
+  background-color: white;
+  padding: 7px;
+}
+
+.table-bordered-2 th, .table-bordered-2 td {
+    border: 2px solid black;
+}
+
+.table-bordered-2 {
+    border: 2px solid black;
+}
+
+
+.about-head-text{
+  font-size: 5rem;
+}
+
+.about-body-text{
+  font-size: 2rem;
+}
+
+
+.item-show-name{
+  font-size: 2rem;
+}
+
+.item-show-introduction{
+  font-size: 1rem;
+}
+
+
+.item-show-left-area{
+  width: 40%;
+}
+
+.item-show-right-area{
+  width: 40%;
+}
+
+.item-show-price{
+  font-size: 2rem;
+}
+
+// paginate
+.pagination{
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+.pagination span{
+  background-color: white;
+  text-align: center;
+  width: 60px;
+  border: solid 1px #007bff;
+  color: rgb(197, 20, 159);
+  transition: .3s;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.pagination span:first-child {
+  border-radius: 30px 0 0 30px;
+}
+
+.pagination span:last-child {
+  border-radius: 0 30px 30px 0;
+}
+
+.pagination span:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+
+}
+.pagination span a:hover{
+  transition: .3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
